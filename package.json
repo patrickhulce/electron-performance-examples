@@ -1,0 +1,16 @@
+{
+  "name": "electron-performance-examples",
+  "version": "1.0.0",
+  "description": "Collection of electron performance examples.",
+  "main": "main.js",
+  "author": "Patrick Hulce <patrick.hulce@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^6.0.12",
+    "minimist": "^1.2.5"
+  }
+}

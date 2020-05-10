@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <style>
+      #bricks > div {
+        height: 50px;
+        width: 100px;
+        background: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Electron!</h1>
+    <input type="text" />
+    <br />
+    <button onclick="addBrick()">Add brick</button>
+    <button onclick="document.getElementById('bricks').textContent = ''">Clear bricks</button>
+    <br />
+    <button onclick="require('./utils.js').stall(5000)">Stall in Renderer</button>
+    <button onclick="require('electron').ipcRenderer.send('command', {type: 'stall-main'})">
+      Stall in Main
+    </button>
+    <button onclick="require('electron').ipcRenderer.send('command', {type: 'new-renderer'})">
+      Create Renderer
+    </button>
+
+    <div id="random-counter"></div>
+    <div id="bricks"></div>
+
+    <script>
+      function addBrick() {
+        document.getElementById('bricks').appendChild(document.createElement('div'))
+      }
+
+      function update() {
+        document.getElementById('random-counter').textContent = String(Math.random())
+      }
+
+      function updateForever() {
+        update()
+        window.requestAnimationFrame(updateForever)
+      }
+
+      updateForever()
+    </script>
+  </body>
+</html>
