@@ -26,11 +26,30 @@
     <button onclick="require('electron').ipcRenderer.send('command', {type: 'new-renderer'})">
       Create Renderer
     </button>
+    <button onclick="recycleApplicationMenu()">
+      Cycle Application Menu
+    </button>
 
     <div id="random-counter"></div>
     <div id="bricks"></div>
 
     <script>
+      function recycleApplicationMenu() {
+        const extraLargeObject = {}
+        for (let i = 0; i < 10000; i++) {
+          extraLargeObject[`cool-key${i}`] = `super long string ${Date.now()}`.repeat(100)
+        }
+
+        const {Menu} = require('electron').remote
+        const menu = Menu.buildFromTemplate([
+          {
+            label: 'Menu Option',
+            submenu: [{label: 'Action', click: () => console.log(extraLargeObject)}],
+          },
+        ])
+        Menu.setApplicationMenu(menu)
+      }
+
       function addBrick() {
         document.getElementById('bricks').appendChild(document.createElement('div'))
       }
