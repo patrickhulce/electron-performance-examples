@@ -5,6 +5,8 @@ const {stall} = require('./utils')
 const argv = minimist(process.argv.slice(2))
 
 function createRenderer() {
+  if (process.env.FORCE_COLORS) app.commandLine.appendSwitch('force-color-profile', 'srgb')
+
   console.log('Options', argv)
   const window = new BrowserWindow({
     width: 600,
