@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "electron": "^6.0.12",
-    "minimist": "^1.2.5"
+    "jest": "^26.0.1",
+    "jest-image-snapshot": "^4.0.2",
+    "minimist": "^1.2.5",
+    "puppeteer": "^4.0.0"
   }
 }
