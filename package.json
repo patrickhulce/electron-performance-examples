@@ -10,7 +10,7 @@
     "start": "electron ."
   },
   "dependencies": {
-    "electron": "^7.2.4",
+    "electron": "^13.6.6",
     "minimist": "^1.2.5"
   }
 }
